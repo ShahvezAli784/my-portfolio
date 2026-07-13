@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahvez Memon — AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cal+Sans&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F172A;
+  --bg2: #111827;
+  --card: rgba(255,255,255,0.05);
+  --card-hover: rgba(255,255,255,0.08);
+  --purple: #8B5CF6;
+  --blue: #3B82F6;
+  --amber: #F59E0B;
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.16);
+  --purple-glow: rgba(139,92,246,0.15);
+  --blue-glow: rgba(59,130,246,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.4); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 48px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(15,23,42,0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-size: 15px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--purple); }
+.nav-links { display: flex; gap: 8px; list-style: none; }
+.nav-links a {
+  font-size: 14px; color: var(--muted); text-decoration: none;
+  padding: 6px 12px; border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text); background: var(--card); }
+.nav-cta {
+  font-size: 14px; font-weight: 500;
+  padding: 8px 18px; border-radius: 8px;
+  background: var(--purple); color: #fff; text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  border: none; cursor: pointer;
+}
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden; padding: 120px 24px 80px;
+  text-align: center;
+}
+#hero-canvas { position: absolute; inset: 0; z-index: 0; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 100px;
+  border: 1px solid rgba(139,92,246,0.3);
+  background: rgba(139,92,246,0.08);
+  font-size: 13px; color: #A78BFA; font-weight: 500;
+  margin-bottom: 28px; position: relative; z-index: 1;
+  animation: fadeSlideUp 0.6s ease both;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+h1.hero-title {
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #F8FAFC 0%, #94A3B8 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px; position: relative; z-index: 1;
+  animation: fadeSlideUp 0.6s 0.1s ease both;
+}
+h1.hero-title .accent {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-role {
+  font-size: 18px; color: var(--muted); font-weight: 400;
+  margin-bottom: 20px; position: relative; z-index: 1;
+  animation: fadeSlideUp 0.6s 0.2s ease both;
+}
+.hero-tagline {
+  font-size: 16px; color: #64748B; max-width: 520px;
+  margin: 0 auto 40px; line-height: 1.7; position: relative; z-index: 1;
+  animation: fadeSlideUp 0.6s 0.3s ease both;
+}
+.hero-btns {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  position: relative; z-index: 1;
+  animation: fadeSlideUp 0.6s 0.4s ease both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 10px; font-size: 15px;
+  font-weight: 500; text-decoration: none; transition: all 0.2s;
+  cursor: pointer; border: none; font-family: inherit;
+}
+.btn-primary { background: var(--purple); color: #fff; }
+.btn-primary:hover { background: #7C3AED; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.35); }
+.btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--card-hover); border-color: var(--border-hover); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { color: var(--text); border-color: var(--border-hover); }
+
+/* Hero metrics */
+.hero-metrics {
+  display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+  margin-top: 72px; padding-top: 48px;
+  border-top: 1px solid var(--border);
+  position: relative; z-index: 1;
+  animation: fadeSlideUp 0.6s 0.5s ease both;
+}
+.metric { text-align: center; }
+.metric-num {
+  font-size: 36px; font-weight: 700; letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.metric-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTIONS ── */
+section { padding: 100px 24px; position: relative; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-eyebrow {
+  font-size: 13px; font-weight: 600; color: var(--purple);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.section-eyebrow::before { content:''; width: 20px; height: 1px; background: var(--purple); }
+.section-title {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 700;
+  letter-spacing: -0.025em; margin-bottom: 16px; line-height: 1.15;
+}
+.section-subtitle { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 56px; }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── ABOUT ── */
+#about { background: var(--bg2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-size: 15px; }
+.about-text p strong { color: var(--text); }
+.about-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px; transition: border-color 0.2s;
+}
+.about-card:hover { border-color: var(--border-hover); }
+.profile-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.profile-avatar {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.profile-name { font-size: 17px; font-weight: 600; }
+.profile-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.info-row:last-child { border-bottom: none; }
+.info-label { font-size: 13px; color: var(--muted); }
+.info-value { font-size: 13px; color: var(--text); font-weight: 500; }
+.cgpa-badge {
+  display: inline-flex; padding: 3px 10px; border-radius: 100px;
+  background: rgba(139,92,246,0.15); color: #A78BFA;
+  font-size: 12px; font-weight: 600;
+}
+
+/* ── PROJECTS ── */
+#projects { background: var(--bg); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 20px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px; transition: all 0.25s;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.project-card:hover { background: var(--card-hover); border-color: rgba(139,92,246,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.project-card:hover::before { opacity: 1; }
+.project-cat-badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  margin-bottom: 16px; width: fit-content;
+}
+.cat-ml { background: rgba(139,92,246,0.12); color: #A78BFA; }
+.cat-ai { background: rgba(59,130,246,0.12); color: #60A5FA; }
+.cat-fe { background: rgba(16,185,129,0.12); color: #34D399; }
+.cat-se { background: rgba(245,158,11,0.12); color: #FCD34D; }
+.cat-pa { background: rgba(236,72,153,0.12); color: #F472B6; }
+.project-title { font-size: 18px; font-weight: 650; margin-bottom: 10px; letter-spacing: -0.01em; }
+.project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+.tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.tech-pill {
+  font-size: 12px; padding: 3px 10px; border-radius: 100px;
+  background: rgba(255,255,255,0.05); color: var(--muted);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.project-actions { display: flex; gap: 8px; }
+.project-btn {
+  font-size: 13px; font-weight: 500; padding: 8px 14px;
+  border-radius: 8px; text-decoration: none; transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.project-btn-primary { background: rgba(139,92,246,0.12); color: #A78BFA; border: 1px solid rgba(139,92,246,0.2); }
+.project-btn-primary:hover { background: rgba(139,92,246,0.2); border-color: rgba(139,92,246,0.4); }
+.project-btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.project-btn-ghost:hover { color: var(--text); border-color: var(--border-hover); }
+
+/* ── SKILLS ── */
+#skills { background: var(--bg2); }
+#skill-canvas { width: 100%; height: 420px; display: block; }
+.skills-legend {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+  gap: 12px; margin-top: 40px;
+}
+.legend-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; transition: all 0.2s;
+}
+.legend-item:hover { background: var(--card-hover); border-color: var(--border-hover); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.legend-name { font-size: 13px; color: var(--muted); display: flex; align-items: center; margin-bottom: 2px; }
+.legend-pct { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ── EXPERIENCE ── */
+#experience { background: var(--bg); }
+.timeline { max-width: 700px; }
+.tl-item { display: grid; grid-template-columns: 100px 1fr; gap: 24px; padding-bottom: 40px; position: relative; }
+.tl-item:not(:last-child) .tl-line { position: absolute; left: 100px; top: 28px; bottom: 0; width: 1px; background: var(--border); margin-left: 12px; }
+.tl-year { font-size: 13px; font-weight: 600; color: var(--purple); padding-top: 4px; }
+.tl-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(139,92,246,0.15); border: 2px solid rgba(139,92,246,0.4);
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; left: 100px; top: 0; margin-left: 0;
+}
+.tl-dot::after { content:''; width: 8px; height: 8px; border-radius: 50%; background: var(--purple); }
+.tl-content { padding-left: 38px; }
+.tl-role { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+.tl-org { font-size: 14px; color: var(--purple); margin-bottom: 8px; }
+.tl-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tl-tag { font-size: 11px; padding: 2px 8px; border-radius: 100px; background: rgba(59,130,246,0.1); color: #60A5FA; }
+.tl-highlight {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(245,158,11,0.1); color: #FCD34D;
+  border: 1px solid rgba(245,158,11,0.2);
+  padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* ── CERTIFICATIONS ── */
+#certifications { background: var(--bg2); }
+.cert-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 48px; }
+.cert-stat {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px; text-align: center;
+}
+.cert-stat-num { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; }
+.cert-stat-num.purple { color: var(--purple); }
+.cert-stat-num.blue { color: var(--blue); }
+.cert-stat-num.amber { color: var(--amber); }
+.cert-stat-num.green { color: #10B981; }
+.cert-stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 16px; }
+.cert-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 24px;
+  display: flex; align-items: center; gap: 16px;
+  transition: all 0.25s;
+}
+.cert-card:hover { background: var(--card-hover); border-color: var(--border-hover); transform: translateY(-2px); }
+.cert-provider-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.cert-info { flex: 1; min-width: 0; }
+.cert-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cert-provider { font-size: 12px; color: var(--muted); }
+.cert-link {
+  font-size: 12px; font-weight: 500; padding: 6px 12px;
+  border-radius: 8px; text-decoration: none; white-space: nowrap;
+  background: rgba(139,92,246,0.1); color: #A78BFA;
+  border: 1px solid rgba(139,92,246,0.2);
+  transition: all 0.2s;
+}
+.cert-link:hover { background: rgba(139,92,246,0.2); }
+
+/* ── ACHIEVEMENTS ── */
+#achievements { background: var(--bg); }
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 16px; }
+.ach-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 24px;
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: all 0.2s;
+}
+.ach-card:hover { background: var(--card-hover); border-color: var(--border-hover); transform: translateY(-2px); }
+.ach-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.ach-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.ach-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── WHY HIRE ── */
+#why { background: var(--bg2); }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.why-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px; transition: all 0.25s; position: relative; overflow: hidden;
+}
+.why-card::after {
+  content:''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--purple-glow), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.why-card:hover { border-color: rgba(139,92,246,0.25); transform: translateY(-4px); }
+.why-card:hover::after { opacity: 1; }
+.why-icon { font-size: 28px; margin-bottom: 14px; position: relative; z-index: 1; }
+.why-title { font-size: 17px; font-weight: 650; margin-bottom: 8px; position: relative; z-index: 1; }
+.why-desc { font-size: 14px; color: var(--muted); line-height: 1.7; position: relative; z-index: 1; }
+
+/* ── CONTACT ── */
+#contact { background: var(--bg); }
+.contact-inner { max-width: 600px; }
+.contact-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 40px; margin-bottom: 20px;
+  transition: border-color 0.2s;
+}
+.contact-card:hover { border-color: var(--border-hover); }
+.contact-method { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+.contact-method:last-child { border-bottom: none; }
+.contact-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.contact-detail { flex: 1; }
+.contact-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+.contact-value { font-size: 15px; font-weight: 500; }
+.contact-actions { display: flex; gap: 8px; }
+.contact-copy-btn {
+  font-size: 12px; padding: 6px 12px; border-radius: 7px;
+  background: var(--card); color: var(--muted);
+  border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.contact-copy-btn:hover { background: var(--card-hover); color: var(--text); border-color: var(--border-hover); }
+.contact-tagline { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 40px 48px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg); flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-size: 14px; font-weight: 600; }
+.footer-logo span { color: var(--purple); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 13px; color: #475569; }
+
+/* ── DIVIDER ── */
+.gradient-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(59,130,246,0.3), transparent); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .cert-stats { grid-template-columns: repeat(2,1fr); }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+@media(max-width:600px){
+  section { padding: 72px 20px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .hero-metrics { gap: 24px; }
+  .projects-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shahvez<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:shahvezmemon3@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-badge reveal">
+    <span class="badge-dot"></span>
+    Available for AI/ML Internships & Opportunities
+  </div>
+
+  <h1 class="hero-title reveal reveal-delay-1">
+    Shahvez<br><span class="accent">Memon</span>
+  </h1>
+
+  <p class="hero-role reveal reveal-delay-2">AI/ML Engineer &nbsp;·&nbsp; Software Developer</p>
+
+  <p class="hero-tagline reveal reveal-delay-3">
+    Building intelligent systems through machine learning, data-driven solutions, and modern software engineering.
+  </p>
+
+  <div class="hero-btns reveal reveal-delay-4">
+    <a href="#projects" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Explore My Work
+    </a>
+    <a href="https://github.com/ShahvezAli784" target="_blank" class="btn btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      GitHub
+    </a>
+    <a href="mailto:shahvezmemon3@gmail.com" class="btn btn-ghost">Contact Me</a>
+  </div>
+
+  <div class="hero-metrics reveal">
+    <div class="metric">
+      <div class="metric-num" data-target="5" data-suffix="">0</div>
+      <div class="metric-label">Featured Projects</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num" data-target="9" data-suffix="">0</div>
+      <div class="metric-label">Certifications Earned</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num" data-target="15" data-suffix="+">0</div>
+      <div class="metric-label">Technologies Used</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num" data-target="3" data-suffix=" yrs">0</div>
+      <div class="metric-label">Academic Journey</div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-eyebrow">Research Profile</div>
+        <h2 class="section-title">Turning data into<br>intelligent solutions</h2>
+        <p>I'm a <strong>Computer Science student at Sukkur IBA University</strong> with a deep interest in Artificial Intelligence, Machine Learning, and Software Engineering. I'm driven by building systems that learn, adapt, and solve real problems.</p>
+        <p>From predictive analytics and ML model development to full-stack web applications and Java desktop software — I work across the stack to bring ideas to life. Currently gaining industry exposure as an <strong>AI/ML Intern at FlyRank AI</strong>.</p>
+        <p>My approach combines solid academic foundations with continuous self-learning through certifications, open-source contribution, and hands-on project building.</p>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="https://github.com/ShahvezAli784" target="_blank" class="btn btn-secondary" style="font-size:14px;padding:10px 20px">GitHub Profile</a>
+          <a href="https://www.linkedin.com/in/shahvez-memon-528a18405" target="_blank" class="btn btn-ghost" style="font-size:14px;padding:10px 20px">LinkedIn</a>
+          <a href="https://www.kaggle.com/shahvezmemonmahmood" target="_blank" class="btn btn-ghost" style="font-size:14px;padding:10px 20px">Kaggle</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="about-card">
+          <div class="profile-header">
+            <div class="profile-avatar">SM</div>
+            <div>
+              <div class="profile-name">Shahvez Memon</div>
+              <div class="profile-sub">AI/ML Engineer · Software Developer</div>
+            </div>
+          </div>
+          <div class="info-row"><span class="info-label">Degree</span><span class="info-value">BS Computer Science</span></div>
+          <div class="info-row"><span class="info-label">University</span><span class="info-value">Sukkur IBA University</span></div>
+          <div class="info-row"><span class="info-label">Year</span><span class="info-value">4th Year</span></div>
+          <div class="info-row"><span class="info-label">CGPA</span><span class="info-value"><span class="cgpa-badge">3.3 / 4.0</span></span></div>
+          <div class="info-row"><span class="info-label">Graduation</span><span class="info-value">Expected 2027</span></div>
+          <div class="info-row"><span class="info-label">Location</span><span class="info-value">Shikarpur, Sindh, Pakistan</span></div>
+          <div class="info-row"><span class="info-label">Status</span><span class="info-value" style="color:#10B981;display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;background:#10B981;border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span>AI/ML Intern @ FlyRank AI</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Research &amp; Engineering Work</div>
+      <h2 class="section-title">Things I've built</h2>
+      <p class="section-subtitle">A selection of machine learning systems, AI applications, and software solutions I've engineered — from concept to deployment.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-cat-badge cat-ml">Machine Learning</span>
+        <h3 class="project-title">Oscar Winning Movie Prediction</h3>
+        <p class="project-desc">Built a machine learning system that analyzes historical Academy Award data to identify patterns and predict Oscar-winning films — combining feature engineering with predictive modeling.</p>
+        <div class="tech-list">
+          <span class="tech-pill">Python</span><span class="tech-pill">Scikit-learn</span><span class="tech-pill">Pandas</span><span class="tech-pill">Predictive Modeling</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/ShahvezAli784" target="_blank" class="project-btn project-btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Repo
+          </a>
+          <a href="#projects" class="project-btn project-btn-ghost">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-cat-badge cat-pa">Predictive Analytics</span>
+        <h3 class="project-title">Calories Burnt Prediction</h3>
+        <p class="project-desc">Developed an interactive Streamlit web app that uses an XGBoost model to predict calories burned during exercise based on user biometrics and workout parameters — with real-time inference.</p>
+        <div class="tech-list">
+          <span class="tech-pill">Python</span><span class="tech-pill">XGBoost</span><span class="tech-pill">Streamlit</span><span class="tech-pill">NumPy</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/ShahvezAli784" target="_blank" class="project-btn project-btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Repo
+          </a>
+          <a href="#projects" class="project-btn project-btn-ghost">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3">
+        <span class="project-cat-badge cat-ai">Artificial Intelligence</span>
+        <h3 class="project-title">TechGuide AI Device Assistant</h3>
+        <p class="project-desc">Designed an AI-powered assistant that helps users navigate technology purchasing decisions through intent recognition, context-aware recommendations, and a polished conversational interface built with Streamlit.</p>
+        <div class="tech-list">
+          <span class="tech-pill">Python</span><span class="tech-pill">LangChain</span><span class="tech-pill">Streamlit</span><span class="tech-pill">OpenRouter API</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/ShahvezAli784" target="_blank" class="project-btn project-btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Repo
+          </a>
+          <a href="#projects" class="project-btn project-btn-ghost">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-cat-badge cat-fe">Frontend Development</span>
+        <h3 class="project-title">Interactive Web Music Player</h3>
+        <p class="project-desc">Created a responsive web-based music player featuring full playlist support, intuitive playback controls, and a polished modern interface — built with vanilla JavaScript for maximum performance.</p>
+        <div class="tech-list">
+          <span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Web Audio API</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/ShahvezAli784" target="_blank" class="project-btn project-btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Repo
+          </a>
+          <a href="#projects" class="project-btn project-btn-ghost">View Details</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-cat-badge cat-se">Software Engineering</span>
+        <h3 class="project-title">Tour &amp; Travel Management</h3>
+        <p class="project-desc">Built a full-featured Java Swing desktop application for managing travel bookings, customer records, itinerary planning, and tourism operations — with persistent database storage.</p>
+        <div class="tech-list">
+          <span class="tech-pill">Java</span><span class="tech-pill">Swing</span><span class="tech-pill">MySQL</span><span class="tech-pill">OOP</span>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/ShahvezAli784" target="_blank" class="project-btn project-btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub Repo
+          </a>
+          <a href="#projects" class="project-btn project-btn-ghost">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">AI Capability Matrix</div>
+      <h2 class="section-title">Skills &amp; Technologies</h2>
+      <p class="section-subtitle">An interconnected view of my technical capabilities — from core languages to AI/ML frameworks and engineering tools.</p>
+    </div>
+    <canvas id="skill-canvas" class="reveal"></canvas>
+    <div class="skills-legend reveal">
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#8B5CF6"></span>Python</div><div class="legend-pct" style="color:#8B5CF6">95%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#3B82F6"></span>Machine Learning</div><div class="legend-pct" style="color:#3B82F6">88%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#10B981"></span>Scikit-learn</div><div class="legend-pct" style="color:#10B981">90%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#F59E0B"></span>Deep Learning</div><div class="legend-pct" style="color:#F59E0B">75%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#EC4899"></span>NLP / LLMs</div><div class="legend-pct" style="color:#EC4899">70%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#06B6D4"></span>JavaScript</div><div class="legend-pct" style="color:#06B6D4">75%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#A78BFA"></span>TensorFlow</div><div class="legend-pct" style="color:#A78BFA">80%</div></div>
+      <div class="legend-item"><div class="legend-name"><span class="legend-dot" style="background:#34D399"></span>Data Analysis</div><div class="legend-pct" style="color:#34D399">85%</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Growth Journey</div>
+      <h2 class="section-title">How I got here</h2>
+      <p class="section-subtitle">A progressive journey from academic foundations through real-world AI industry experience.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-year">2023</div>
+        <div class="tl-content">
+          <div class="tl-role">Computer Science Student</div>
+          <div class="tl-org">Sukkur IBA University</div>
+          <div class="tl-desc">Started the BS Computer Science program, building a strong foundation in algorithms, data structures, OOP, and software engineering principles.</div>
+          <div class="tl-tags"><span class="tl-tag">Algorithms</span><span class="tl-tag">OOP</span><span class="tl-tag">Data Structures</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <div class="tl-role">Software Development Phase</div>
+          <div class="tl-org">Academic & Personal Projects</div>
+          <div class="tl-desc">Built web applications using modern frontend technologies and a full-featured Java Swing desktop application for travel management — gaining full-stack experience.</div>
+          <div class="tl-tags"><span class="tl-tag">Java</span><span class="tl-tag">HTML/CSS/JS</span><span class="tl-tag">React</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-year">2025</div>
+        <div class="tl-content">
+          <div class="tl-role">AI Systems Development</div>
+          <div class="tl-org">Independent Research & Competitions</div>
+          <div class="tl-desc">Developed ML systems for predictive analytics, built AI-powered assistants, and competed in the ProBattle Hackathon at IBA Karachi. Earned multiple AI and ML certifications from Kaggle and Google.</div>
+          <div class="tl-tags"><span class="tl-tag">Machine Learning</span><span class="tl-tag">XGBoost</span><span class="tl-tag">Streamlit</span><span class="tl-tag">Hackathon</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-3">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-year">2026</div>
+        <div class="tl-content">
+          <div class="tl-highlight">🚀 Current Position</div>
+          <div class="tl-role">AI/ML Intern</div>
+          <div class="tl-org">FlyRank AI</div>
+          <div class="tl-desc">Contributing to real-world AI workflows and production systems. Bridging academic machine learning knowledge with practical industry applications and engineering standards.</div>
+          <div class="tl-tags"><span class="tl-tag">Production AI</span><span class="tl-tag">ML Engineering</span><span class="tl-tag">Industry Experience</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal reveal-delay-4">
+        <div class="tl-dot" style="background:rgba(245,158,11,0.15);border-color:rgba(245,158,11,0.4)"><span style="width:8px;height:8px;border-radius:50%;background:var(--amber)"></span></div>
+        <div class="tl-year" style="color:var(--amber)">2027</div>
+        <div class="tl-content">
+          <div class="tl-role" style="color:var(--amber)">Career Objective</div>
+          <div class="tl-org">Expected Graduation — Open to Opportunities</div>
+          <div class="tl-desc">Targeting roles as an AI Engineer, Machine Learning Engineer, or Software Engineer at companies building impactful AI systems. Ready to contribute from day one.</div>
+          <div class="tl-tags" style="gap:6px">
+            <span class="tl-tag" style="background:rgba(245,158,11,0.1);color:#FCD34D">AI Engineer</span>
+            <span class="tl-tag" style="background:rgba(245,158,11,0.1);color:#FCD34D">ML Engineer</span>
+            <span class="tl-tag" style="background:rgba(245,158,11,0.1);color:#FCD34D">Software Engineer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Verified Certifications</div>
+      <h2 class="section-title">Credentials &amp; Learning</h2>
+      <p class="section-subtitle">Verified certifications from Google, Kaggle, MongoDB, and OneRoadmap — reflecting a commitment to continuous learning.</p>
+    </div>
+
+    <div class="cert-stats reveal">
+      <div class="cert-stat"><div class="cert-stat-num purple">9</div><div class="cert-stat-label">Total Certifications</div></div>
+      <div class="cert-stat"><div class="cert-stat-num blue">4</div><div class="cert-stat-label">AI Certifications</div></div>
+      <div class="cert-stat"><div class="cert-stat-num amber">3</div><div class="cert-stat-label">ML Certifications</div></div>
+      <div class="cert-stat"><div class="cert-stat-num green">2</div><div class="cert-stat-label">Data Certifications</div></div>
+    </div>
+
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-provider-icon" style="background:rgba(139,92,246,0.1)">🎯</div>
+        <div class="cert-info"><div class="cert-name">AI Engineer Certification</div><div class="cert-provider">OneRoadmap</div></div>
+        <a href="https://www.oneroadmap.io/skills/ai/certificate/CERT-5DD785AE" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-provider-icon" style="background:rgba(59,130,246,0.1)">📊</div>
+        <div class="cert-info"><div class="cert-name">Data Analyst Certification</div><div class="cert-provider">OneRoadmap</div></div>
+        <a href="https://www.oneroadmap.io/skills/da/certificate/CERT-10023C8D" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-provider-icon" style="background:rgba(16,185,129,0.1)">🌐</div>
+        <div class="cert-info"><div class="cert-name">Google AI Essentials Specialization</div><div class="cert-provider">Google / Coursera</div></div>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/JNVH76NPFA9Y" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-provider-icon" style="background:rgba(16,185,129,0.1)">🍃</div>
+        <div class="cert-info"><div class="cert-name">Introduction to MongoDB</div><div class="cert-provider">MongoDB University</div></div>
+        <a href="https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/40477187-6241-4a2a-9aca-cd9293c86d71-shahvez-memon-mahmood-94cec509-5609-47bd-a75b-0eabbf063751-certificate.pdf" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-provider-icon" style="background:rgba(245,158,11,0.1)">⚖️</div>
+        <div class="cert-info"><div class="cert-name">Intro to AI Ethics</div><div class="cert-provider">Kaggle</div></div>
+        <a href="https://www.kaggle.com/learn/certification/shahvezmemonmahmood/intro-to-ai-ethics" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-provider-icon" style="background:rgba(139,92,246,0.1)">🧠</div>
+        <div class="cert-info"><div class="cert-name">Intro to Deep Learning</div><div class="cert-provider">Kaggle</div></div>
+        <a href="https://www.kaggle.com/learn/certification/shahvezmemonmahmood/intro-to-deep-learning" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-provider-icon" style="background:rgba(59,130,246,0.1)">🤖</div>
+        <div class="cert-info"><div class="cert-name">Intermediate Machine Learning</div><div class="cert-provider">Kaggle</div></div>
+        <a href="https://www.kaggle.com/learn/certification/shahvezmemonmahmood/intermediate-machine-learning" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-provider-icon" style="background:rgba(16,185,129,0.1)">📈</div>
+        <div class="cert-info"><div class="cert-name">Intro to Machine Learning</div><div class="cert-provider">Kaggle</div></div>
+        <a href="https://www.kaggle.com/learn/certification/shahvezmemonmahmood/intro-to-machine-learning" target="_blank" class="cert-link">View ↗</a>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-provider-icon" style="background:rgba(245,158,11,0.1)">💻</div>
+        <div class="cert-info"><div class="cert-name">Intro to Programming</div><div class="cert-provider">Kaggle</div></div>
+        <a href="https://www.kaggle.com/learn/certification/shahvezmemonmahmood/intro-to-programming" target="_blank" class="cert-link">View ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Milestones</div>
+      <h2 class="section-title">Key Achievements</h2>
+    </div>
+    <div class="achievements-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon" style="background:rgba(245,158,11,0.1)">🏆</div>
+        <div><div class="ach-title">STHP Scholarship Recipient</div><div class="ach-desc">Awarded the Sindh Technical Human Power scholarship, recognizing academic excellence and potential in the field of technology.</div></div>
+      </div>
+      <div class="ach-card reveal reveal-delay-1">
+        <div class="ach-icon" style="background:rgba(139,92,246,0.1)">⚡</div>
+        <div><div class="ach-title">ProBattle Hackathon Participant</div><div class="ach-desc">Competed at IBA Karachi's ProBattle Hackathon — one of Pakistan's prestigious programming and AI innovation competitions.</div></div>
+      </div>
+      <div class="ach-card reveal reveal-delay-2">
+        <div class="ach-icon" style="background:rgba(59,130,246,0.1)">🚀</div>
+        <div><div class="ach-title">AI/ML Intern at FlyRank AI</div><div class="ach-desc">Secured an industry internship in AI/ML, applying machine learning knowledge to production systems and real business problems.</div></div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon" style="background:rgba(16,185,129,0.1)">📜</div>
+        <div><div class="ach-title">9 AI &amp; Data Science Certifications</div><div class="ach-desc">Earned verified certifications spanning Machine Learning, Deep Learning, AI Ethics, Data Analysis, and more through Kaggle, Google, and MongoDB.</div></div>
+      </div>
+      <div class="ach-card reveal reveal-delay-1">
+        <div class="ach-icon" style="background:rgba(245,158,11,0.1)">🐙</div>
+        <div><div class="ach-title">Active GitHub Developer</div><div class="ach-desc">Maintains a public GitHub presence with open-source projects in ML and software development, demonstrating consistent technical growth.</div></div>
+      </div>
+      <div class="ach-card reveal reveal-delay-2">
+        <div class="ach-icon" style="background:rgba(236,72,153,0.1)">📊</div>
+        <div><div class="ach-title">Active Kaggle Learner</div><div class="ach-desc">Regular Kaggle community participant completing courses, notebooks, and ML challenges to sharpen practical data science skills.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- WHY HIRE -->
+<section id="why">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Why Work With Me</div>
+      <h2 class="section-title">What I bring to the table</h2>
+      <p class="section-subtitle">Beyond the resume — the qualities that make me an effective collaborator and engineering contributor.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🧠</div>
+        <div class="why-title">Strong AI/ML Foundation</div>
+        <div class="why-desc">Deep understanding of ML algorithms, model building, and AI system design — backed by hands-on projects and verified certifications.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🔨</div>
+        <div class="why-title">Practical Project Experience</div>
+        <div class="why-desc">Built real ML systems from scratch — from data preprocessing and model training to deployment in interactive applications.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">🏢</div>
+        <div class="why-title">Industry Exposure</div>
+        <div class="why-desc">Hands-on internship experience at FlyRank AI bridges the gap between academic knowledge and production engineering standards.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📚</div>
+        <div class="why-title">Continuous Learning Mindset</div>
+        <div class="why-desc">9 certifications, active Kaggle participation, and self-initiated projects reflect genuine curiosity and drive to stay current in AI/ML.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🧩</div>
+        <div class="why-title">Problem-Solving Skills</div>
+        <div class="why-desc">Tackled complex challenges in hackathons, data competitions, and independent research — comfortable working through ambiguity.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">⚙️</div>
+        <div class="why-title">Full-Stack Engineering</div>
+        <div class="why-desc">Comfortable across the stack — Python ML backends, Streamlit web apps, React frontends, Java desktop systems, and database integration.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Let's Connect</div>
+      <h2 class="section-title">Get in touch</h2>
+      <p class="contact-tagline">I'm always open to discussing AI, machine learning, software engineering opportunities, internships, collaborations, and innovative projects.</p>
+    </div>
+
+    <div class="contact-inner reveal">
+      <div class="contact-card">
+        <div class="contact-method">
+          <div class="contact-icon" style="background:rgba(139,92,246,0.1)">✉️</div>
+          <div class="contact-detail">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">shahvezmemon3@gmail.com</div>
+          </div>
+          <div class="contact-actions">
+            <button class="contact-copy-btn" onclick="copyEmail()">Copy</button>
+            <a href="mailto:shahvezmemon3@gmail.com" class="btn btn-primary" style="font-size:13px;padding:8px 16px">Send Email</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon" style="background:rgba(59,130,246,0.1)">💼</div>
+          <div class="contact-detail">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">Shahvez Memon</div>
+          </div>
+          <div class="contact-actions">
+            <a href="https://www.linkedin.com/in/shahvez-memon-528a18405" target="_blank" class="btn btn-secondary" style="font-size:13px;padding:8px 16px">Open ↗</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon" style="background:rgba(255,255,255,0.05)">🐙</div>
+          <div class="contact-detail">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">ShahvezAli784</div>
+          </div>
+          <div class="contact-actions">
+            <a href="https://github.com/ShahvezAli784" target="_blank" class="btn btn-secondary" style="font-size:13px;padding:8px 16px">Open ↗</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon" style="background:rgba(245,158,11,0.1)">📊</div>
+          <div class="contact-detail">
+            <div class="contact-label">Kaggle</div>
+            <div class="contact-value">shahvezmemonmahmood</div>
+          </div>
+          <div class="contact-actions">
+            <a href="https://www.kaggle.com/shahvezmemonmahmood" target="_blank" class="btn btn-secondary" style="font-size:13px;padding:8px 16px">Open ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Shahvez<span>.</span></div>
+  <div class="footer-links">
+    <a href="https://github.com/ShahvezAli784" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/shahvez-memon-528a18405" target="_blank">LinkedIn</a>
+    <a href="https://www.kaggle.com/shahvezmemonmahmood" target="_blank">Kaggle</a>
+    <a href="mailto:shahvezmemon3@gmail.com">Email</a>
+  </div>
+  <div class="footer-copy">© 2026 Shahvez Memon. Built with purpose.</div>
+</footer>
+
+<script>
+/* ── HERO NEURAL CANVAS ── */
+(function(){
+  const c = document.getElementById('hero-canvas');
+  const ctx = c.getContext('2d');
+  let W, H, nodes, t=0;
+
+  function init(){
+    W = c.width = window.innerWidth;
+    H = c.height = window.innerHeight;
+    nodes = Array.from({length:55}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-0.5)*0.4,
+      vy: (Math.random()-0.5)*0.4,
+      r: Math.random()*2+1,
+      opacity: Math.random()*0.5+0.2
+    }));
+  }
+  init();
+  window.addEventListener('resize', init);
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // Connections
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<130){
+          const alpha=(1-d/130)*0.12;
+          // Alternate purple/blue lines
+          const hue = (i+j)%2===0 ? '139,92,246' : '59,130,246';
+          ctx.strokeStyle=`rgba(${hue},${alpha})`;
+          ctx.lineWidth=0.8;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke();
+        }
+      }
+    }
+    // Nodes
+    nodes.forEach((n,i) => {
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+      const pulse=(Math.sin(t*0.02+i*0.5)+1)/2;
+      const color = i%3===0 ? '139,92,246' : i%3===1 ? '59,130,246' : '99,102,241';
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r+pulse*1,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${color},${n.opacity*0.7})`; ctx.fill();
+    });
+    t++; requestAnimationFrame(draw);
+  }
+  draw();
+
+  // Parallax
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{ mx=(e.clientX/W-0.5)*0.015; my=(e.clientY/H-0.5)*0.015; });
+  setInterval(()=>{ nodes.forEach(n=>{ n.vx+=mx*0.01; n.vy+=my*0.01; const spd=Math.sqrt(n.vx*n.vx+n.vy*n.vy); if(spd>0.7){ n.vx/=spd; n.vy/=spd; } }); },16);
+})();
+
+/* ── SKILL CANVAS ── */
+(function(){
+  const c = document.getElementById('skill-canvas');
+  const ctx = c.getContext('2d');
+  const skills = [
+    {label:'Python',pct:95,color:'#8B5CF6'},{label:'Machine Learning',pct:88,color:'#3B82F6'},
+    {label:'Scikit-learn',pct:90,color:'#10B981'},{label:'Deep Learning',pct:75,color:'#F59E0B'},
+    {label:'NLP/LLMs',pct:70,color:'#EC4899'},{label:'JavaScript',pct:75,color:'#06B6D4'},
+    {label:'TensorFlow',pct:80,color:'#A78BFA'},{label:'Data Analysis',pct:85,color:'#34D399'},
+    {label:'Java',pct:70,color:'#FB923C'},{label:'React',pct:65,color:'#60A5FA'},
+    {label:'Git/Docker',pct:80,color:'#94A3B8'}
+  ];
+
+  let t=0;
+  function resize(){ c.width=c.offsetWidth; c.height=420; draw(); }
+  function draw(){
+    const W=c.width,H=c.height;
+    ctx.clearRect(0,0,W,H);
+    const cx=W/2, cy=H/2, r=Math.min(W,H)*0.28;
+    // Center node
+    const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,36);
+    grad.addColorStop(0,'rgba(139,92,246,0.3)'); grad.addColorStop(1,'rgba(139,92,246,0.05)');
+    ctx.beginPath(); ctx.arc(cx,cy,36,0,Math.PI*2); ctx.fillStyle=grad; ctx.fill();
+    ctx.beginPath(); ctx.arc(cx,cy,36,0,Math.PI*2); ctx.strokeStyle='rgba(139,92,246,0.5)'; ctx.lineWidth=1.5; ctx.stroke();
+    ctx.font='bold 12px Inter,sans-serif'; ctx.fillStyle='#F8FAFC'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('AI/ML', cx, cy-6); ctx.fillText('Engineer', cx, cy+8);
+
+    skills.forEach((s,i)=>{
+      const angle=(i/skills.length)*Math.PI*2 - Math.PI/2 + t*0.003;
+      const pulse=Math.sin(t*0.04+i*0.6)*0.04;
+      const rr=r*(1+pulse);
+      const x=cx+Math.cos(angle)*rr, y=cy+Math.sin(angle)*rr;
+      // Connection
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(x,y);
+      ctx.strokeStyle=s.color+'22'; ctx.lineWidth=1; ctx.stroke();
+      // Arc
+      const nodeR=18+s.pct*0.08;
+      const arcG=ctx.createRadialGradient(x,y,0,x,y,nodeR);
+      arcG.addColorStop(0,s.color+'44'); arcG.addColorStop(1,s.color+'08');
+      ctx.beginPath(); ctx.arc(x,y,nodeR,0,Math.PI*2); ctx.fillStyle=arcG; ctx.fill();
+      ctx.beginPath(); ctx.arc(x,y,nodeR,0,Math.PI*2); ctx.strokeStyle=s.color+'66'; ctx.lineWidth=1.2; ctx.stroke();
+      // Label
+      ctx.font='11px Inter,sans-serif'; ctx.fillStyle='#F8FAFC'; ctx.textAlign='center'; ctx.textBaseline='middle';
+      const words=s.label.split('/');
+      if(words.length>1){ ctx.fillText(words[0],x,y-5); ctx.fillText(words[1],x,y+6); }
+      else { ctx.fillText(s.label,x,y); }
+    });
+    t++; requestAnimationFrame(draw);
+  }
+  resize(); window.addEventListener('resize',resize);
+})();
+
+/* ── COUNTERS ── */
+function animateCounters(){
+  document.querySelectorAll('.metric-num[data-target]').forEach(el=>{
+    const target=+el.dataset.target;
+    const suffix=el.dataset.suffix||'';
+    let cur=0; const steps=40;
+    const inc=target/steps;
+    let frame=0;
+    const t=setInterval(()=>{
+      frame++; cur+=inc;
+      el.textContent=Math.min(Math.floor(cur),target)+suffix;
+      if(frame>=steps){ el.textContent=target+suffix; clearInterval(t); }
+    },30);
+  });
+}
+const metricObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ animateCounters(); metricObs.disconnect(); } }); },{threshold:0.5});
+const metricsEl=document.querySelector('.hero-metrics');
+if(metricsEl) metricObs.observe(metricsEl);
+
+/* ── SCROLL REVEAL ── */
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ── COPY EMAIL ── */
+function copyEmail(){
+  navigator.clipboard.writeText('shahvezmemon3@gmail.com').then(()=>{
+    const btn=document.querySelector('.contact-copy-btn');
+    btn.textContent='Copied!'; btn.style.color='#10B981';
+    setTimeout(()=>{ btn.textContent='Copy'; btn.style.color=''; },2000);
+  });
+}
+
+/* ── NAV ACTIVE ── */
+const sections=['hero','about','projects','skills','certifications','contact'];
+const navLinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-100) current=id; });
+  navLinks.forEach(a=>{ a.style.color=a.getAttribute('href')==='#'+current?'#F8FAFC':''; });
+});
+</script>
+</body>
+</html>
