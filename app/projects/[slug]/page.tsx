@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { Chip } from "@/components/ui/Chip";
 import { MarginNote } from "@/components/ui/MarginNote";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
-
+import { ProjectMetrics } from "@/components/ui/ProjectMetrics";
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -70,15 +70,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           </div>
         </RevealOnScroll>
 
-        {/* Architecture / screenshot placeholder */}
-        <RevealOnScroll delay={0.1}>
-          <div className="mt-14 flex aspect-[16/8] items-center justify-center rounded-2xl border border-dashed border-border bg-surface">
-            <p className="font-mono text-xs uppercase tracking-wider text-muted">
-              Screenshot / architecture diagram placeholder — add real assets to
-              /public/images/{project.slug}/
-            </p>
-          </div>
-        </RevealOnScroll>
+        {project.metrics && (
+          <RevealOnScroll delay={0.1}>
+            <ProjectMetrics metrics={project.metrics} />
+          </RevealOnScroll>
+        )}
 
         <div className="mt-16 grid gap-14 md:grid-cols-[1fr_220px]">
           {/* Main narrative column */}
@@ -117,15 +113,29 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </ul>
             </RevealOnScroll>
 
-            <RevealOnScroll delay={0.15}>
-              <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                Challenges &amp; lessons
-              </h2>
-              <p className="mt-3 max-w-prose text-muted">
-                {project.challenges ??
-                  "PLACEHOLDER — the specific challenges and lessons from building this haven't been written up yet. Worth adding: what broke, what surprised you, what you'd do differently."}
-              </p>
-            </RevealOnScroll>
+           <RevealOnScroll delay={0.15}>
+            <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+              Challenges &amp; Lessons
+            </h2>
+
+            <div className="mt-3 max-w-prose space-y-6 text-muted">
+              <div>
+                <h3 className="font-semibold text-ink">Challenges</h3>
+                <p>
+                  {project.challenges ??
+                    "Creating a deterministic intent engine that accurately identified devices and tasks while handling ambiguous inputs through targeted follow-up questions instead of immediately invoking an LLM."}
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-ink">Lessons Learned</h3>
+                <p>
+                  {project.lessons ??
+                    "Learned how separating intent detection, prompt engineering, and API integration into independent modules improves maintainability, reduces unnecessary LLM calls, and produces more predictable AI applications."}
+                </p>
+              </div>
+            </div>
+          </RevealOnScroll>
 
             <RevealOnScroll delay={0.2}>
               <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-accent">

@@ -18,6 +18,28 @@ export type Project = {
   demo: string | null;
   featured: boolean;
   year: string;
+  metrics?: ProjectMetrics;
+};
+
+export type ProjectMetrics = {
+  overview?: {
+    model?: string;
+    architecture?: string;
+    deployment?: string;
+    readiness?: string;
+  };
+  performance?: {
+    mae?: string;
+    rmse?: string;
+    r2?: string;
+    accuracy?: string;
+    precision?: string;
+    recall?: string;
+    f1?: string;
+    rocAuc?: string;
+    prAuc?: string;
+  };
+  engineering?: string[];
 };
 
 export const projects: Project[] = [
@@ -49,59 +71,160 @@ export const projects: Project[] = [
     year: "2026",
   },
   {
-    slug: "calories-prediction-ml",
-    name: "Calories Burnt Prediction",
-    oneLiner:
-      "An XGBoost regressor, shipped as a Streamlit app instead of left in a notebook.",
-    problem:
-      "Estimating calories burned during exercise is useful for fitness tracking and health monitoring, but most course projects stop at a model's R² score — not something a person could actually use.",
-    why:
-      "Wanted to take a regression problem all the way through the pipeline: raw data to a saved model to an interface someone could actually type numbers into.",
-    approach: [
-      "Merged two source datasets (exercise.csv and calories.csv) on user ID to build the training set — features include gender, age, height, weight, duration, heart rate, and body temperature.",
-      "Ran the standard ML pipeline explicitly: cleaning, EDA, feature engineering, train/test split, training, evaluation, serialization.",
-      "Trained an XGBoost Regressor — chosen for its accuracy on tabular data, ability to model non-linear relationships, and fast inference.",
-      "Serialized the trained model and wrapped it in a Streamlit app for real-time, interactive predictions.",
+  slug: "calories-prediction-ml",
+  name: "Calories Burnt Prediction",
+  oneLiner:
+    "A production-ready machine learning regression system with modular pipelines, FastAPI deployment, and an interactive Streamlit interface.",
+
+  problem:
+    "Most beginner ML projects end after training a model in a notebook. This project demonstrates how to build, package, and serve a complete regression system that users and applications can interact with.",
+
+  why:
+    "Built to practice the complete ML engineering workflow—from data preprocessing and feature engineering through model deployment—using production-oriented software architecture rather than notebook-centric code.",
+
+  approach: [
+    "Built a modular machine learning pipeline that separates data preprocessing, feature engineering, model training, evaluation, and inference into reusable components.",
+    "Merged exercise and calorie datasets, engineered model-ready features, and trained an XGBoost regressor achieving MAE 1.22, RMSE 1.75, and R² 0.999 on held-out data.",
+    "Packaged the trained model behind a FastAPI REST API with health-check and OpenAPI (Swagger/ReDoc) documentation while also providing a Streamlit interface for interactive predictions.",
+    "Implemented structured logging, centralized configuration, model serialization, and a scalable project layout to mirror production ML application design.",
+  ],
+
+  stack: [
+    "Python",
+    "XGBoost",
+    "Scikit-learn",
+    "FastAPI",
+    "Streamlit",
+    "Pandas",
+    "NumPy",
+    "Pydantic",
+    "Uvicorn",
+    "Matplotlib",
+    "Seaborn",
+  ],
+
+  challenges: null,
+
+  lessons: null,
+
+  future: [
+    "Containerize the application with Docker.",
+    "Add MLflow experiment tracking and model versioning.",
+    "Implement CI/CD with GitHub Actions.",
+    "Deploy to a cloud platform with automated monitoring.",
+  ],
+
+  github: "https://github.com/ShahvezAli784/calories-prediction-ml",
+
+  demo: null,
+
+  featured: true,
+
+  year: "2026",
+
+  metrics: {
+    overview: {
+      model: "XGBoost Regressor",
+      architecture: "Modular Machine Learning Pipeline",
+      deployment: "FastAPI + Streamlit",
+      readiness: "Production Ready",
+    },
+    performance: {
+      mae: "1.22",
+      rmse: "1.75",
+      r2: "0.9992",
+    },
+    engineering: [
+      "Feature Engineering Pipeline",
+      "FastAPI REST API",
+      "Interactive Streamlit Interface",
+      "Structured Logging",
+      "Model Serialization",
+      "Modular Project Architecture",
     ],
-    stack: ["Python", "XGBoost", "Pandas", "Streamlit", "Jupyter Notebook"],
-    challenges: null,
-    lessons: null,
-    future: [
-      "Add prediction intervals instead of a single point estimate.",
-      "Let users log sessions over time rather than one-off predictions.",
-    ],
-    github: "https://github.com/ShahvezAli784/calories-prediction-ml",
-    demo: null,
-    featured: true,
-    year: "2026",
   },
+},
   {
-    slug: "oscar-ai-predictor",
-    name: "Oscar Award Predictor",
-    oneLiner:
-      "Predicting Oscar outcomes from movie metadata — because the manual version is just guessing.",
-    problem:
-      "Predicting award-winning movies is influenced by ratings, popularity, genre, and historical trends — factors that are easy to gesture at qualitatively and hard to weigh consistently by hand.",
-    why:
-      "Wanted to see how far movie metadata alone could get toward explaining historical Oscar patterns, and to practice the full applied-ML loop on a dataset with real, messy signal.",
-    approach: [
-      "Combined movie metadata with a historical Oscar-award dataset (the_oscar_award.csv) rather than relying on a single source.",
-      "Ran preprocessing and feature engineering on both datasets before model training.",
-      "Trained a classification model with Scikit-learn and serialized both the model and its engineered features separately (oscar_model.pkl, model_features.pkl).",
-      "Deployed the result as an interactive Streamlit app rather than a static notebook output.",
+  slug: "oscar-ai-predictor",
+
+  name: "Oscar AI Predictor",
+
+  oneLiner:
+    "A production-oriented machine learning classification system that predicts Oscar winners using engineered movie metadata, experiment tracking, and containerized deployment.",
+
+  problem:
+    "Award outcomes are influenced by many interacting factors—including ratings, reviews, financial performance, genre, and historical trends—which makes manual prediction inconsistent and difficult to quantify.",
+
+  why:
+    "Built to explore an end-to-end classification workflow on a real-world, imbalanced dataset while emphasizing reproducible ML engineering practices such as modular pipelines, experiment tracking, deployment, and containerization.",
+
+  approach: [
+    "Integrated IMDb movie metadata with historical Academy Award records before applying preprocessing, feature engineering, numerical transformations, and categorical encoding.",
+    "Engineered numerical and categorical features including ROI, logarithmic transformations, review statistics, genre, language, country, and content-rating encodings.",
+    "Trained a Random Forest classifier with MLflow experiment tracking, achieving 69.5% accuracy, 72.6% ROC-AUC, and 49.0% PR-AUC while handling an imbalanced target.",
+    "Deployed the trained model through both a FastAPI inference service and a Streamlit application, packaged inside a Docker container with centralized configuration, logging, and custom exception handling.",
+  ],
+
+  stack: [
+    "Python",
+    "Scikit-learn",
+    "Random Forest",
+    "MLflow",
+    "FastAPI",
+    "Docker",
+    "Streamlit",
+    "Pandas",
+    "NumPy",
+    "Pydantic",
+    "Uvicorn",
+  ],
+
+  challenges: null,
+
+  lessons: null,
+
+  future: [
+    "Integrate SHAP explainability.",
+    "Add MLflow Model Registry.",
+    "Automate CI/CD and cloud deployment.",
+    "Implement model monitoring and automated retraining.",
+  ],
+
+  github: "https://github.com/ShahvezAli784/oscar-ai-predictor",
+
+  demo: null,
+
+  featured: true,
+
+  year: "2026",
+
+  metrics: {
+    overview: {
+      model: "Random Forest Classifier",
+      architecture: "End-to-End Machine Learning Pipeline",
+      deployment: "FastAPI + Docker + Streamlit",
+      readiness: "Production Ready",
+    },
+    performance: {
+      accuracy: "69.49%",
+      precision: "53.52%",
+      recall: "54.13%",
+      f1: "53.82%",
+      rocAuc: "72.56%",
+      prAuc: "49.01%",
+    },
+    engineering: [
+      "Feature Engineering Pipeline",
+      "MLflow Experiment Tracking",
+      "FastAPI REST API",
+      "Docker Containerization",
+      "Model Serialization",
+      "Structured Logging",
+      "Configuration Management",
+      "Interactive Streamlit Interface",
     ],
-    stack: ["Python", "Scikit-learn", "Pandas", "NumPy", "Streamlit"],
-    challenges: null,
-    lessons: null,
-    future: [
-      "Bring in review-text sentiment as an additional feature source.",
-      "Track prediction accuracy against each new award season as ground truth arrives.",
-    ],
-    github: "https://github.com/ShahvezAli784/oscar-ai-predictor",
-    demo: null,
-    featured: true,
-    year: "2026",
   },
+},
   {
     slug: "tour-travel-management",
     name: "Tour & Travel Management System",
